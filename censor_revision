@@ -1,0 +1,64 @@
+#8/11 
+#We wrote about censor codes,that is,
+#write a function called censor that takes two strings, text and word, as input.
+#It should return the text with the word you chose replaced with asterisks.
+
+###########################################
+#########  Origional codes:  ##############
+###########################################
+
+def censor(text,word):
+#modify the text so that the last word can be detected.
+    text=text+' '
+    n=0
+    lst=[]
+    w=''
+    
+#Traverse all the elements in the text and seperate into words and put in the list.
+    for i in range(len(text)):
+        if text[i] == " ":
+            for m in range(n,i):
+                w=w+text[m]
+                n=i+1
+            lst.append(w)
+            w=''
+            
+#match the word and words in the list.
+    items=len(lst)
+    for ll in range(items):
+        if word==lst[ll]:
+            lst[ll]='*'*len(lst[ll])
+            
+#make up the words into a sentence.
+    sentence=''
+    for rev in lst:
+        if items>1:
+            sentence=sentence+rev+' '
+            items=items-1
+        elif items==1:
+            sentence=sentence+rev
+    return sentence
+                
+print censor('i want an apple','an')
+
+
+
+###########################################
+###########  Revised codes:  ##############
+###########################################
+
+def censor(text,word):
+    sentence=''
+    lst=text.split()           
+    items=len(lst)
+    for rev in lst:
+        if word == rev:
+            rev='*'*len(rev)
+        if items>1:
+            sentence=sentence+rev+' '
+            items=items-1
+        else:
+            sentence=sentence+rev
+    return sentence
+                
+print censor('i want an apple','an')
