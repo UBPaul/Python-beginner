@@ -1,2 +1,2 @@
 # Python-beginner
-For Python learning at codecadamy
+For Python learning at codecadamy.com
